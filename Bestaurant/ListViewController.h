@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 typedef enum _ListViewControllerType {
     ListViewControllerTypeNearby,
     ListViewControllerTypeRecommended
 } ListViewControllerType;
 
-@interface ListViewController : UITableViewController
+@interface ListViewController : UITableViewController <CLLocationManagerDelegate> {
+    NSArray *data;
+    CLLocationManager *locationManager;
+}
 @property(nonatomic) ListViewControllerType type;
 
 -(id)initWithType:(ListViewControllerType)type;
