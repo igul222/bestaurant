@@ -20,4 +20,16 @@ static DataProvider *sharedInstance = nil;
     }
 }
 
+-(NSArray *)itemsForLatitude:(double)latitude longitude:(double)longitude {
+    return nil;
+}
+
+-(void)savePreference:(BOOL)liked forItem:(NSString *)itemID {
+    
+}
+
+-(NSArray *)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude {
+    return nil;
+}
+
 @end

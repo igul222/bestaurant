@@ -12,4 +12,8 @@
 
 +(DataProvider *)shared;
 
+-(NSArray *)itemsForLatitude:(double)latitude longitude:(double)longitude;
+-(void)savePreference:(BOOL)liked forItem:(NSString *)itemID;
+-(NSArray *)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude;
+
 @end
