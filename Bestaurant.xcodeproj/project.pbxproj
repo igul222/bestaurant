@@ -16,14 +16,11 @@
 		4C1A401E164EE38200C2D2EF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A401D164EE38200C2D2EF /* Default.png */; };
 		4C1A4020164EE38200C2D2EF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A401F164EE38200C2D2EF /* Default@2x.png */; };
 		4C1A4022164EE38200C2D2EF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A4021164EE38200C2D2EF /* Default-568h@2x.png */; };
-		4C1A4025164EE38200C2D2EF /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A4024164EE38200C2D2EF /* FirstViewController.m */; };
 		4C1A4027164EE38200C2D2EF /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A4026164EE38200C2D2EF /* first.png */; };
 		4C1A4029164EE38200C2D2EF /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A4028164EE38200C2D2EF /* first@2x.png */; };
-		4C1A402C164EE38200C2D2EF /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A402B164EE38200C2D2EF /* SecondViewController.m */; };
 		4C1A402E164EE38200C2D2EF /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A402D164EE38200C2D2EF /* second.png */; };
 		4C1A4030164EE38200C2D2EF /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A402F164EE38200C2D2EF /* second@2x.png */; };
-		4C1A4033164EE38200C2D2EF /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A4031164EE38200C2D2EF /* FirstViewController.xib */; };
-		4C1A4036164EE38200C2D2EF /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A4034164EE38200C2D2EF /* SecondViewController.xib */; };
+		4C3BB675164EE81400F35125 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BB674164EE81400F35125 /* ListViewController.m */; };
 		4C97135C164EE4320095410A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C97134A164EE4320095410A /* AFHTTPClient.m */; };
 		4C97135D164EE4320095410A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C97134C164EE4320095410A /* AFHTTPRequestOperation.m */; };
 		4C97135E164EE4320095410A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C97134E164EE4320095410A /* AFImageRequestOperation.m */; };
@@ -51,16 +48,12 @@
 		4C1A401D164EE38200C2D2EF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4C1A401F164EE38200C2D2EF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4C1A4021164EE38200C2D2EF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		4C1A4023164EE38200C2D2EF /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		4C1A4024164EE38200C2D2EF /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		4C1A4026164EE38200C2D2EF /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		4C1A4028164EE38200C2D2EF /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		4C1A402A164EE38200C2D2EF /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		4C1A402B164EE38200C2D2EF /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		4C1A402D164EE38200C2D2EF /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		4C1A402F164EE38200C2D2EF /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		4C1A4032164EE38200C2D2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
-		4C1A4035164EE38200C2D2EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
+		4C3BB673164EE81400F35125 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		4C3BB674164EE81400F35125 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		4C971349164EE4320095410A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		4C97134A164EE4320095410A /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		4C97134B164EE4320095410A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -139,17 +132,13 @@
 				4CA5DDB4164EE3A0005E2658 /* DataProvider.m */,
 				4C1A401A164EE38200C2D2EF /* AppDelegate.h */,
 				4C1A401B164EE38200C2D2EF /* AppDelegate.m */,
-				4C1A4023164EE38200C2D2EF /* FirstViewController.h */,
-				4C1A4024164EE38200C2D2EF /* FirstViewController.m */,
 				4C1A4026164EE38200C2D2EF /* first.png */,
 				4C1A4028164EE38200C2D2EF /* first@2x.png */,
-				4C1A402A164EE38200C2D2EF /* SecondViewController.h */,
-				4C1A402B164EE38200C2D2EF /* SecondViewController.m */,
 				4C1A402D164EE38200C2D2EF /* second.png */,
 				4C1A402F164EE38200C2D2EF /* second@2x.png */,
-				4C1A4031164EE38200C2D2EF /* FirstViewController.xib */,
-				4C1A4034164EE38200C2D2EF /* SecondViewController.xib */,
 				4C1A4012164EE38200C2D2EF /* Supporting Files */,
+				4C3BB673164EE81400F35125 /* ListViewController.h */,
+				4C3BB674164EE81400F35125 /* ListViewController.m */,
 			);
 			path = Bestaurant;
 			sourceTree = "<group>";
@@ -252,8 +241,6 @@
 				4C1A4029164EE38200C2D2EF /* first@2x.png in Resources */,
 				4C1A402E164EE38200C2D2EF /* second.png in Resources */,
 				4C1A4030164EE38200C2D2EF /* second@2x.png in Resources */,
-				4C1A4033164EE38200C2D2EF /* FirstViewController.xib in Resources */,
-				4C1A4036164EE38200C2D2EF /* SecondViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,8 +253,6 @@
 			files = (
 				4C1A4018164EE38200C2D2EF /* main.m in Sources */,
 				4C1A401C164EE38200C2D2EF /* AppDelegate.m in Sources */,
-				4C1A4025164EE38200C2D2EF /* FirstViewController.m in Sources */,
-				4C1A402C164EE38200C2D2EF /* SecondViewController.m in Sources */,
 				4C97135C164EE4320095410A /* AFHTTPClient.m in Sources */,
 				4C97135D164EE4320095410A /* AFHTTPRequestOperation.m in Sources */,
 				4C97135E164EE4320095410A /* AFImageRequestOperation.m in Sources */,
@@ -277,6 +262,7 @@
 				4C971362164EE4320095410A /* AFURLConnectionOperation.m in Sources */,
 				4C971363164EE4320095410A /* AFXMLRequestOperation.m in Sources */,
 				4C971364164EE4320095410A /* UIImageView+AFNetworking.m in Sources */,
+				4C3BB675164EE81400F35125 /* ListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,22 +275,6 @@
 				4C1A4015164EE38200C2D2EF /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		4C1A4031164EE38200C2D2EF /* FirstViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4C1A4032164EE38200C2D2EF /* en */,
-			);
-			name = FirstViewController.xib;
-			sourceTree = "<group>";
-		};
-		4C1A4034164EE38200C2D2EF /* SecondViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4C1A4035164EE38200C2D2EF /* en */,
-			);
-			name = SecondViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
