@@ -17,13 +17,13 @@ static DataProvider *sharedInstance = nil;
 -(id)init {
     self = [super init];
     if(self) {
-        likes = [NSArray arrayWithContentsOfFile:[self pathForFilename:@"likes.plist"]];
+        likes = [NSMutableArray arrayWithContentsOfFile:[self pathForFilename:@"likes.plist"]];
         if(!likes)
-            likes = [[NSArray alloc] init];
+            likes = [[NSMutableArray alloc] init];
         
-        dislikes = [NSArray arrayWithContentsOfFile:[self pathForFilename:@"dislikes.plist"]];
+        dislikes = [NSMutableArray arrayWithContentsOfFile:[self pathForFilename:@"dislikes.plist"]];
         if(!dislikes)
-            dislikes = [[NSArray alloc] init];
+            dislikes = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -51,25 +51,29 @@ static DataProvider *sharedInstance = nil;
     NSArray *params=[NSArray arrayWithObjects:authToken,lat,lng, rad, que, topic, nil];
     NSString *base=@"http://api.hunch.com/api/v1/";
     NSString *method=@"get-results/?";
-    NSString *unEscapedUrl = [base stringByAppendingFormat:@"%@/%@", method, [params componentsJoinedByString:@"&"]];
-    
-    NSString* escapedUrl = [unEscapedUrl
-                            stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *url = [NSURL URLWithString:escapedUrl];
+//    NSString *unEscapedUrl = [base stringByAppendingFormat:@"%@/%@", method, [params componentsJoinedByString:@"&"]];
+//    
+//    NSString* escapedUrl = [unEscapedUrl
+//                            stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:[[base stringByAppendingFormat:@"%@/%@", method, [params componentsJoinedByString:@"&"]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 
         // you might need to process json to be in some good format or whatever instead of just using it. idk.
-        callback(JSON);
+        callback(JSON[@"results"]);
 
     } failure:nil];
     [operation start];
-
-    callback( @[@{@"name": @"Le Bec Fin", @"id": @"k8J(#kIhusdf8w9hrf3e", @"image": @"http://lorempixel.com/500/500/"}] );
     
 }
 
 -(void)savePreference:(BOOL)liked forItem:(NSString *)itemID {
+    if (liked) {
+        [likes addObject:itemID];
+    }
+    else{
+        [dislikes addObject:itemID];
+    }
     [likes writeToFile:[self pathForFilename:@"likes.plist"] atomically:YES];
     [dislikes writeToFile:[self pathForFilename:@"dislikes.plist"] atomically:YES];
 }
@@ -77,7 +81,26 @@ static DataProvider *sharedInstance = nil;
 //http://api.hunch.com/api/v1/get-recommendations/?auth_token=a9778a4bd4ad67e179d72937819e6776e2434bc7&lat=40.74&lng=-74&radius=10&likes=hn_217541&dislikes=hn_217545
 
 -(void)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude callback:(void(^)(NSArray *items))callback {
-    callback( @[@{@"name": @"Good Recommendation", @"id": @"k8J(#kIhusdf8w9hrf3e", @"image": @"http://lorempixel.com/500/500/"}] );
+    NSString *authToken= [@"auth_token=" stringByAppendingString:AUTH_TOKEN];
+    NSString *lat= [@"lat=" stringByAppendingFormat:@"%f",latitude];
+    NSString *lng= [@"lng=" stringByAppendingFormat:@"%f",longitude];
+    NSString *rad= @"radius=10";
+    NSString *topic=@"topic_id=list_restaurants";
+    NSString *likeString=[@"likes=" stringByAppendingFormat:@"%@",[likes componentsJoinedByString:@","]];
+    NSString *dislikeString=[@"dislikes=" stringByAppendingFormat:@"%@",[dislikes componentsJoinedByString:@","]];
+    NSArray *params=[NSArray arrayWithObjects:authToken,lat,lng, rad, topic, likeString, dislikeString, nil];
+    NSString *base=@"http://api.hunch.com/api/v1/";
+    NSString *method=@"get-recommendations/?";
+     NSURL *url = [NSURL URLWithString:[[base stringByAppendingFormat:@"%@/%@", method, [params componentsJoinedByString:@"&"]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
+        // you might need to process json to be in some good format or whatever instead of just using it. idk.
+        callback(JSON[@"recommendations"]);
+        
+    } failure:nil];
+    [operation start];
+    
 }
 
 -(NSString *)pathForFilename:(NSString *)filename {
