@@ -40,16 +40,18 @@ static DataProvider *sharedInstance = nil;
 // query parameter can be nil
 -(void)itemsForLatitude:(double)latitude longitude:(double)longitude query:(NSString *)query callback:(void(^)(NSArray *items))callback {
     
-    NSURL *url = [NSURL URLWithString:@"https://whatever..."];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        
-        // you might need to process json to be in some good format or whatever instead of just using it. idk.
-        callback(JSON);
-        
-    } failure:nil];
-    [operation start];
+//    NSURL *url = [NSURL URLWithString:@"https://whatever..."];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+//        
+//        // you might need to process json to be in some good format or whatever instead of just using it. idk.
+//        callback(JSON);
+//        
+//    } failure:nil];
+//    [operation start];
 
+    callback( @[@{@"name": @"Le Bec Fin", @"id": @"k8J(#kIhusdf8w9hrf3e", @"image": @"http://lorempixel.com/500/500/"}] );
+    
 }
 
 -(void)savePreference:(BOOL)liked forItem:(NSString *)itemID {
@@ -58,7 +60,7 @@ static DataProvider *sharedInstance = nil;
 }
 
 -(void)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude callback:(void(^)(NSArray *items))callback {
-
+    callback( @[@{@"name": @"Good Recommendation", @"id": @"k8J(#kIhusdf8w9hrf3e", @"image": @"http://lorempixel.com/500/500/"}] );
 }
 
 -(NSString *)pathForFilename:(NSString *)filename {
