@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface DataProvider : NSObject {
-    NSArray *likes;
-    NSArray *dislikes;
+    NSMutableArray *likes;
+    NSMutableArray *dislikes;
 }
 
 +(DataProvider *)shared;
