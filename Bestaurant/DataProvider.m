@@ -42,30 +42,26 @@ static DataProvider *sharedInstance = nil;
 // http://api.hunch.com/api/v1/get-results?query=WHATEVER&topic_ids=list_restaurant
 // query parameter can be nil
 -(void)itemsForLatitude:(double)latitude longitude:(double)longitude query:(NSString *)query callback:(void(^)(NSArray *items))callback {
-    NSString *authToken= [@"auth_token=" stringByAppendingString:AUTH_TOKEN];
-    NSString *lat= [@"lat=" stringByAppendingFormat:@"%f",latitude];
-    NSString *lng= [@"lng=" stringByAppendingFormat:@"%f",longitude];
-    NSString *rad= @"radius=10";
-    NSString *que=[@"query=" stringByAppendingFormat:@"%@", [query stringByReplacingOccurrencesOfString:@" " withString: @"+"]];
-    NSString *topic=@"topic_ids=list_restaurant";
-    NSArray *params=[NSArray arrayWithObjects:authToken,lat,lng, rad, que, topic, nil];
-    NSString *base=@"http://api.hunch.com/api/v1/";
-    NSString *method=@"get-results/?";
-//    NSString *unEscapedUrl = [base stringByAppendingFormat:@"%@/%@", method, [params componentsJoinedByString:@"&"]];
-//    
-//    NSString* escapedUrl = [unEscapedUrl
-//                            stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *url = [NSURL URLWithString:[[base stringByAppendingFormat:@"%@%@", method, [params componentsJoinedByString:@"&"]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-
-        // you might need to process json to be in some good format or whatever instead of just using it. idk.
-        callback(JSON[@"results"]);
-        //callback(JSON);
-
-    } failure:nil];
-    [operation start];
+    NSString *query_str = (query ? [NSString stringWithFormat:@"query=%@&",[query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] : @"");
     
+    NSString *url_str = [NSString stringWithFormat:
+                       @"http://api.hunch.com/api/v1/get-results?auth_token=%@&lat=%f&lng=%f&radius=10&%@topic_ids=list_restaurant",
+                       AUTH_TOKEN,
+                       latitude,
+                       longitude,
+                       query_str
+                    ];
+    
+    NSLog(@"getting items, url: %@",url_str);
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url_str]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"received items: %@",JSON);
+        callback(JSON[@"results"]);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"error getting items: %@", error.userInfo);
+    }];
+    [operation start];
 }
 
 -(void)savePreference:(BOOL)liked forItem:(NSString *)item_id {
@@ -82,26 +78,26 @@ static DataProvider *sharedInstance = nil;
 //http://api.hunch.com/api/v1/get-recommendations/?auth_token=a9778a4bd4ad67e179d72937819e6776e2434bc7&lat=40.74&lng=-74&radius=10&likes=hn_217541&dislikes=hn_217545
 
 -(void)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude callback:(void(^)(NSArray *items))callback {
-    NSString *authToken= [@"auth_token=" stringByAppendingString:AUTH_TOKEN];
-    NSString *lat= [@"lat=" stringByAppendingFormat:@"%f",latitude];
-    NSString *lng= [@"lng=" stringByAppendingFormat:@"%f",longitude];
-    NSString *rad= @"radius=10";
-    NSString *topic=@"topic_ids=list_restaurant";
-    NSString *likeString=[@"likes=" stringByAppendingFormat:@"%@",[likes componentsJoinedByString:@","]];
-    NSString *dislikeString=[@"dislikes=" stringByAppendingFormat:@"%@",[dislikes componentsJoinedByString:@","]];
-    NSArray *params=[NSArray arrayWithObjects:authToken,lat,lng, rad, topic, likeString, dislikeString, nil];
-    NSString *base=@"http://api.hunch.com/api/v1/";
-    NSString *method=@"get-recommendations/?";
-    NSURL *url = [NSURL URLWithString:[[base stringByAppendingFormat:@"%@%@", method, [params componentsJoinedByString:@"&"]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    NSLog(@"%@", url);
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        
-        // you might need to process json to be in some good format or whatever instead of just using it. idk.
-        callback(JSON[@"recommendations"]);
-    } failure:nil];
-    [operation start];
+    NSString *url_str = [NSString stringWithFormat:
+                         @"http://api.hunch.com/api/v1/get-recommendations?auth_token=%@&lat=%f&lng=%f&radius=10&likes=%@&dislikes=%@&topic_ids=list_restaurant",
+                         AUTH_TOKEN,
+                         latitude,
+                         longitude,
+                         [likes componentsJoinedByString:@","],
+                         [dislikes componentsJoinedByString:@","]
+                         ];
     
+    
+    NSLog(@"getting recommendations, url: %@",url_str);
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url_str]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"received recommendations: %@",JSON);
+        callback(JSON[@"recommendations"]);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"error getting recommendations: %@", error.userInfo);
+    }];
+    [operation start];
 }
 
 -(NSString *)pathForFilename:(NSString *)filename {

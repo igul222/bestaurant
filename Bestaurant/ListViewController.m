@@ -58,6 +58,8 @@
                                                       [self.tableView reloadData];
                                                   }];
     }
+    
+    [locationManager stopUpdatingLocation];
 }
 
 #pragma mark - Table view
