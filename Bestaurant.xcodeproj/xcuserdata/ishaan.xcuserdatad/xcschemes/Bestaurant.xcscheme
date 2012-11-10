@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4CFB6881164EAC2A003A9BEB"
+               BlueprintIdentifier = "4C1A4006164EE38200C2D2EF"
                BuildableName = "Bestaurant.app"
                BlueprintName = "Bestaurant"
                ReferencedContainer = "container:Bestaurant.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4CFB6881164EAC2A003A9BEB"
+            BlueprintIdentifier = "4C1A4006164EE38200C2D2EF"
             BuildableName = "Bestaurant.app"
             BlueprintName = "Bestaurant"
             ReferencedContainer = "container:Bestaurant.xcodeproj">
@@ -51,7 +51,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4CFB6881164EAC2A003A9BEB"
+            BlueprintIdentifier = "4C1A4006164EE38200C2D2EF"
             BuildableName = "Bestaurant.app"
             BlueprintName = "Bestaurant"
             ReferencedContainer = "container:Bestaurant.xcodeproj">
@@ -69,7 +69,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4CFB6881164EAC2A003A9BEB"
+            BlueprintIdentifier = "4C1A4006164EE38200C2D2EF"
             BuildableName = "Bestaurant.app"
             BlueprintName = "Bestaurant"
             ReferencedContainer = "container:Bestaurant.xcodeproj">
