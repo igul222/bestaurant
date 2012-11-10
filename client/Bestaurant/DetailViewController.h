@@ -3,7 +3,7 @@
 //  Bestaurant
 //
 //  Created by Ishaan Gulrajani on 11/10/12.
-//  Copyright (c) 2012 HackPrinceton. All rights reserved.
+//  Copyright (c) 2012 Ishaan Gulrajani. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
