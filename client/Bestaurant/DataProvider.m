@@ -7,9 +7,24 @@
 //
 
 #import "DataProvider.h"
+#import "AFJSONRequestOperation.h"
 
 @implementation DataProvider
 static DataProvider *sharedInstance = nil;
+
+-(id)init {
+    self = [super init];
+    if(self) {
+        likes = [NSArray arrayWithContentsOfFile:[self pathForFilename:@"likes.plist"]];
+        if(!likes)
+            likes = [[NSArray alloc] init];
+        
+        dislikes = [NSArray arrayWithContentsOfFile:[self pathForFilename:@"dislikes.plist"]];
+        if(!dislikes)
+            dislikes = [[NSArray alloc] init];
+    }
+    return self;
+}
 
 +(DataProvider *)shared {
     @synchronized(self) {
@@ -20,16 +35,34 @@ static DataProvider *sharedInstance = nil;
     }
 }
 
--(NSArray *)itemsForLatitude:(double)latitude longitude:(double)longitude {
-    return nil;
+
+// http://api.hunch.com/api/v1/get-results?query=WHATEVER&topic_ids=list_restaurant
+// query parameter can be nil
+-(void)itemsForLatitude:(double)latitude longitude:(double)longitude query:(NSString *)query callback:(void(^)(NSArray *items))callback {
+    
+    NSURL *url = [NSURL URLWithString:@"https://whatever..."];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
+        // you might need to process json to be in some good format or whatever instead of just using it. idk.
+        callback(JSON);
+        
+    } failure:nil];
+    [operation start];
+
 }
 
 -(void)savePreference:(BOOL)liked forItem:(NSString *)itemID {
-    
+    [likes writeToFile:[self pathForFilename:@"likes.plist"] atomically:YES];
+    [dislikes writeToFile:[self pathForFilename:@"dislikes.plist"] atomically:YES];
 }
 
--(NSArray *)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude {
-    return nil;
+-(void)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude callback:(void(^)(NSArray *items))callback {
+
+}
+
+-(NSString *)pathForFilename:(NSString *)filename {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:filename];
 }
 
 @end

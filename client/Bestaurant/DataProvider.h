@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DataProvider : NSObject
+@interface DataProvider : NSObject {
+    NSArray *likes;
+    NSArray *dislikes;
+}
 
 +(DataProvider *)shared;
 
--(NSArray *)itemsForLatitude:(double)latitude longitude:(double)longitude;
+-(void)itemsForLatitude:(double)latitude longitude:(double)longitude query:(NSString *)query callback:(void(^)(NSArray *items))callback;
 -(void)savePreference:(BOOL)liked forItem:(NSString *)itemID;
--(NSArray *)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude;
+-(void)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude callback:(void(^)(NSArray *items))callback;
+
 
 @end
