@@ -17,6 +17,8 @@
 		4C9645F2164EADEC00E2F9B7 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9645E7164EADEC00E2F9B7 /* AFURLConnectionOperation.m */; };
 		4C9645F3164EADEC00E2F9B7 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9645E9164EADEC00E2F9B7 /* AFXMLRequestOperation.m */; };
 		4C9645F4164EADEC00E2F9B7 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9645EB164EADEC00E2F9B7 /* UIImageView+AFNetworking.m */; };
+		4C9645FE164ECF1700E2F9B7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9645F7164EAE1A00E2F9B7 /* MobileCoreServices.framework */; };
+		4C9645FF164ECF1E00E2F9B7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9645F5164EAE0900E2F9B7 /* SystemConfiguration.framework */; };
 		4CFB6887164EAC2A003A9BEB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CFB6886164EAC2A003A9BEB /* UIKit.framework */; };
 		4CFB6889164EAC2A003A9BEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CFB6888164EAC2A003A9BEB /* Foundation.framework */; };
 		4CFB688B164EAC2A003A9BEB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CFB688A164EAC2A003A9BEB /* CoreGraphics.framework */; };
@@ -82,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C9645FF164ECF1E00E2F9B7 /* SystemConfiguration.framework in Frameworks */,
+				4C9645FE164ECF1700E2F9B7 /* MobileCoreServices.framework in Frameworks */,
 				4CFB6887164EAC2A003A9BEB /* UIKit.framework in Frameworks */,
 				4CFB6889164EAC2A003A9BEB /* Foundation.framework in Frameworks */,
 				4CFB688B164EAC2A003A9BEB /* CoreGraphics.framework in Frameworks */,
