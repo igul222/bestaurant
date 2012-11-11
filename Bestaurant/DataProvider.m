@@ -84,13 +84,21 @@ static DataProvider *sharedInstance = nil;
 //http://api.hunch.com/api/v1/get-recommendations/?auth_token=a9778a4bd4ad67e179d72937819e6776e2434bc7&lat=40.74&lng=-74&radius=10&likes=hn_217541&dislikes=hn_217545
 
 -(void)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude callback:(void(^)(NSArray *items))callback {
+    [self recommendedItemsForLatitude:latitude
+                            longitude:longitude
+                                likes:likes
+                             dislikes:dislikes
+                             callback:callback];
+}
+
+-(void)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude likes:(NSArray *)theLikes dislikes:(NSArray *)theDislikes callback:(void (^)(NSArray *))callback {
     NSString *url_str = [NSString stringWithFormat:
                          @"http://api.hunch.com/api/v1/get-recommendations?auth_token=%@&lat=%f&lng=%f&radius=30&likes=%@&dislikes=%@&topic_ids=list_restaurant",
                          AUTH_TOKEN,
                          latitude,
                          longitude,
-                         [likes componentsJoinedByString:@","],
-                         [dislikes componentsJoinedByString:@","]
+                         [theLikes componentsJoinedByString:@","],
+                         [theDislikes componentsJoinedByString:@","]
                          ];
     
     

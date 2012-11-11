@@ -25,7 +25,6 @@
     [[BumpClient sharedClient] setChannelConfirmedBlock:^(BumpChannelID channel) {
         NSLog(@"Channel with %@ confirmed.", [[BumpClient sharedClient] userIDForChannel:channel]);
         NSArray *taste=[NSArray arrayWithObjects:
-                        @"cake",
                         [[DataProvider shared] getLikes],
                         [[DataProvider shared] getDislikes], nil];
         [[BumpClient sharedClient] sendData:[NSKeyedArchiver archivedDataWithRootObject:taste]
@@ -34,9 +33,11 @@
     }];
     
     [[BumpClient sharedClient] setDataReceivedBlock:^(BumpChannelID channel, NSData *data) {
+        NSArray *dataArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        
         NSLog(@"Data received from %@: %@",
               [[BumpClient sharedClient] userIDForChannel:channel],
-              [NSKeyedUnarchiver unarchiveObjectWithData:data]);
+              dataArray);
     }];
     
     //the above code will decode the keyed archive into an array again
