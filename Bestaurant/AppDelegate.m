@@ -24,18 +24,22 @@
     
     [[BumpClient sharedClient] setChannelConfirmedBlock:^(BumpChannelID channel) {
         NSLog(@"Channel with %@ confirmed.", [[BumpClient sharedClient] userIDForChannel:channel]);
-        [[BumpClient sharedClient] sendData:[[NSArray arrayWithObjects:
-                                              @"cake",
-                                              [[DataProvider shared] getLikes],
-                                              [[DataProvider shared] getDislikes], nil] dataUsingEncoding:NSUTF8StringEncoding]
+        NSArray *taste=[NSArray arrayWithObjects:
+                        @"cake",
+                        [[DataProvider shared] getLikes],
+                        [[DataProvider shared] getDislikes], nil];
+        [[BumpClient sharedClient] sendData:[NSKeyedArchiver archivedDataWithRootObject:taste]
                                   toChannel:channel];
+        //Transforms object array to NSData with a keyed archiver, which will be simply decoded on the other end
     }];
     
     [[BumpClient sharedClient] setDataReceivedBlock:^(BumpChannelID channel, NSData *data) {
         NSLog(@"Data received from %@: %@",
               [[BumpClient sharedClient] userIDForChannel:channel],
-              [NSString stringWithCString:[data bytes] encoding:NSUTF8StringEncoding]);
+              [NSKeyedUnarchiver unarchiveObjectWithData:data]);
     }];
+    
+    //the above code will decode the keyed archive into an array again
     
     [[BumpClient sharedClient] setConnectionStateChangedBlock:^(BOOL connected) {
         if (connected) {
