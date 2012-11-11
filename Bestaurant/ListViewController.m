@@ -60,7 +60,7 @@
                                                   }];
     }
     
-    [locationManager stopUpdatingLocation];
+//    [locationManager stopUpdatingLocation];
 }
 
 #pragma mark - Table view
