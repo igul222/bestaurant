@@ -93,7 +93,7 @@ static DataProvider *sharedInstance = nil;
 
 -(void)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude likes:(NSArray *)theLikes dislikes:(NSArray *)theDislikes callback:(void (^)(NSArray *))callback {
     NSString *url_str = [NSString stringWithFormat:
-                         @"http://api.hunch.com/api/v1/get-recommendations?auth_token=%@&lat=%f&lng=%f&radius=30&likes=%@&dislikes=%@&topic_ids=list_restaurant",
+                         @"http://api.hunch.com/api/v1/get-recommendations?limit=30&exclude_dislikes=1&wildcards=1&auth_token=%@&lat=%f&lng=%f&radius=30&likes=%@&dislikes=%@&topic_ids=list_restaurant",
                          AUTH_TOKEN,
                          latitude,
                          longitude,

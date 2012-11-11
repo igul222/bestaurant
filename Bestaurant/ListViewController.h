@@ -29,6 +29,6 @@ typedef enum _ListViewControllerType {
 @property(nonatomic, strong) NSArray *dislikes;
 
 -(id)initWithType:(ListViewControllerType)type;
--(void)refresh;
+-(void)explicitRefresh;
 
 @end

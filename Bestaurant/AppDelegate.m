@@ -40,12 +40,20 @@
         
         if([self.tabBarController modalViewController]) {
             NSLog(@"modal view controller exists: %@",self.tabBarController.modalViewController);
+            ListViewController *bumpVC = [((UINavigationController *)self.tabBarController.modalViewController) viewControllers][0];
+            
+            bumpVC.likes = [[[NSSet setWithArray:bumpVC.likes] setByAddingObjectsFromArray:dataArray[0]] allObjects];
+            bumpVC.dislikes = [[[NSSet setWithArray:bumpVC.dislikes] setByAddingObjectsFromArray:dataArray[1]] allObjects];
+            
+            [bumpVC explicitRefresh];
+
         } else {
             NSLog(@"creating modal view controller");
             ListViewController *bumpVC = [[ListViewController alloc] initWithType:ListViewControllerTypeBump];
-            bumpVC.likes = dataArray[0];
-            bumpVC.dislikes = dataArray[1];
+            bumpVC.likes = [[[NSSet setWithArray:bumpVC.likes] setByAddingObjectsFromArray:dataArray[0]] allObjects];
+            bumpVC.dislikes = [[[NSSet setWithArray:bumpVC.dislikes] setByAddingObjectsFromArray:dataArray[1]] allObjects];
             
+            [bumpVC explicitRefresh];
             UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:bumpVC];
             [self.tabBarController presentModalViewController:navC animated:YES];
         }

@@ -33,6 +33,9 @@
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                                    target:self
                                                                                                    action:@selector(dismiss)];
+            
+            self.likes = @[];
+            self.dislikes = @[];
         }
     }
 
@@ -48,20 +51,26 @@
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
     
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    searchBar.delegate = self;
-    self.tableView.tableHeaderView = searchBar;
-    
-    searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
-    searchController.delegate = self;
-    searchController.searchResultsDataSource = self;
-    searchController.searchResultsDelegate = self;
+    if(_type == ListViewControllerTypeNearby) {
+        UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        searchBar.delegate = self;
+        self.tableView.tableHeaderView = searchBar;
+        
+        searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+        searchController.delegate = self;
+        searchController.searchResultsDataSource = self;
+        searchController.searchResultsDelegate = self;
+    }
     
     UIColor *color = [UIColor colorWithPatternImage:[UIImage tallImageNamed:@"leather-background.png"]];
     [self.view setBackgroundColor:color];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.tableView.rowHeight = 62.0;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [self refresh];
 }
 
 #pragma mark - Refreshing
@@ -73,6 +82,13 @@
 
     if([locationObject horizontalAccuracy] <= 100.0)
         [locationManager stopUpdatingLocation];
+}
+
+// make it super-obvious that we're refreshing
+-(void)explicitRefresh {
+    data = nil;
+    [self.tableView reloadData];
+    [self refresh];
 }
 
 -(void)refresh {
