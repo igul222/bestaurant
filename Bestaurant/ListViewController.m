@@ -9,6 +9,7 @@
 #import "ListViewController.h"
 #import "DataProvider.h"
 #import "RestaurantViewController.h"
+#import "UIImage+iPhone5.h"
 
 @implementation ListViewController
 
@@ -19,10 +20,12 @@
     if(self) {
         if(_type == ListViewControllerTypeNearby) {
             self.title = @"Nearby";
-            self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Nearby" image:[UIImage imageNamed:@"first.png"] tag:1];
+            self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Nearby" image:nil tag:1];
+            [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"first.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"first.png"]];
         } else if(_type == ListViewControllerTypeRecommended) {
             self.title = @"Recommended";
-            self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Recommended" image:[UIImage imageNamed:@"second.png"] tag:1];
+            self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Recommended" image:nil tag:1];
+            [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"second.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"second.png"]];
         }
     }
 
@@ -42,6 +45,10 @@
     searchController.delegate = self;
     searchController.searchResultsDataSource = self;
     searchController.searchResultsDelegate = self;
+    
+    UIColor *color = [UIColor colorWithPatternImage:[UIImage tallImageNamed:@"leather-background.png"]];
+    [self.view setBackgroundColor:color];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 #pragma mark - Refreshing
