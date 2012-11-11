@@ -11,7 +11,8 @@
 
 typedef enum _ListViewControllerType {
     ListViewControllerTypeNearby,
-    ListViewControllerTypeRecommended
+    ListViewControllerTypeRecommended,
+    ListViewControllerTypeBump
 } ListViewControllerType;
 
 @interface ListViewController : UITableViewController <CLLocationManagerDelegate, UISearchBarDelegate, UISearchDisplayDelegate> {
@@ -24,7 +25,10 @@ typedef enum _ListViewControllerType {
 
 @property(nonatomic) ListViewControllerType type;
 @property (strong, nonatomic) IBOutlet UITableViewCell *listCell;
+@property(nonatomic, strong) NSArray *likes;
+@property(nonatomic, strong) NSArray *dislikes;
 
 -(id)initWithType:(ListViewControllerType)type;
+-(void)refresh;
 
 @end

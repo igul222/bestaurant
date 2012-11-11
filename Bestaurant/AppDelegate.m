@@ -29,7 +29,6 @@
                         [[DataProvider shared] getDislikes], nil];
         [[BumpClient sharedClient] sendData:[NSKeyedArchiver archivedDataWithRootObject:taste]
                                   toChannel:channel];
-        //Transforms object array to NSData with a keyed archiver, which will be simply decoded on the other end
     }];
     
     [[BumpClient sharedClient] setDataReceivedBlock:^(BumpChannelID channel, NSData *data) {
@@ -38,10 +37,20 @@
         NSLog(@"Data received from %@: %@",
               [[BumpClient sharedClient] userIDForChannel:channel],
               dataArray);
+        
+        if([self.tabBarController modalViewController]) {
+            NSLog(@"modal view controller exists: %@",self.tabBarController.modalViewController);
+        } else {
+            NSLog(@"creating modal view controller");
+            ListViewController *bumpVC = [[ListViewController alloc] initWithType:ListViewControllerTypeBump];
+            bumpVC.likes = dataArray[0];
+            bumpVC.dislikes = dataArray[1];
+            
+            UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:bumpVC];
+            [self.tabBarController presentModalViewController:navC animated:YES];
+        }
     }];
-    
-    //the above code will decode the keyed archive into an array again
-    
+
     [[BumpClient sharedClient] setConnectionStateChangedBlock:^(BOOL connected) {
         if (connected) {
             NSLog(@"Bump connected...");

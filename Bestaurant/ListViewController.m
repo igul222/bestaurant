@@ -28,10 +28,19 @@
             self.title = @"Recommended";
             self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Recommended" image:nil tag:1];
             [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"second.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"second.png"]];
+        } else if(_type == ListViewControllerTypeBump) {
+            self.title = @"Bump";
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                                   target:self
+                                                                                                   action:@selector(dismiss)];
         }
     }
 
     return self;
+}
+
+-(void)dismiss {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)viewDidLoad {
@@ -78,6 +87,15 @@
     } else if(_type == ListViewControllerTypeRecommended) {
         [[DataProvider shared] recommendedItemsForLatitude:location.latitude
                                                  longitude:location.longitude
+                                                  callback:^(NSArray *items) {
+                                                      data = items;
+                                                      [self.tableView reloadData];
+                                                  }];
+    } else if(_type == ListViewControllerTypeBump) {
+        [[DataProvider shared] recommendedItemsForLatitude:location.latitude
+                                                 longitude:location.longitude
+                                                     likes:self.likes
+                                                  dislikes:self.dislikes
                                                   callback:^(NSArray *items) {
                                                       data = items;
                                                       [self.tableView reloadData];
