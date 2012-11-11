@@ -32,6 +32,9 @@
 		4C971364164EE4320095410A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C97135B164EE4320095410A /* UIImageView+AFNetworking.m */; };
 		4CAFC1C9164EF07000714D90 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAFC1C8164EF07000714D90 /* CoreLocation.framework */; };
 		4CAFC1CB164EF7F500714D90 /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA5DDB4164EE3A0005E2658 /* DataProvider.m */; };
+		4CAFC1CF164F1F3500714D90 /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAFC1CD164F1F3500714D90 /* RestaurantViewController.m */; };
+		4CAFC1D0164F1F3500714D90 /* RestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAFC1CE164F1F3500714D90 /* RestaurantViewController.xib */; };
+		4CAFC1D2164F236D00714D90 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAFC1D1164F236D00714D90 /* MapKit.framework */; };
 		4CC67416164EE3D400609958 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC67415164EE3D400609958 /* MobileCoreServices.framework */; };
 		4CC67418164EE3DA00609958 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC67417164EE3D900609958 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +81,10 @@
 		4CA5DDB3164EE3A0005E2658 /* DataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataProvider.h; sourceTree = "<group>"; };
 		4CA5DDB4164EE3A0005E2658 /* DataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataProvider.m; sourceTree = "<group>"; };
 		4CAFC1C8164EF07000714D90 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4CAFC1CC164F1F3500714D90 /* RestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantViewController.h; sourceTree = "<group>"; };
+		4CAFC1CD164F1F3500714D90 /* RestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantViewController.m; sourceTree = "<group>"; };
+		4CAFC1CE164F1F3500714D90 /* RestaurantViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantViewController.xib; sourceTree = "<group>"; };
+		4CAFC1D1164F236D00714D90 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4CC67415164EE3D400609958 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4CC67417164EE3D900609958 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -87,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CAFC1D2164F236D00714D90 /* MapKit.framework in Frameworks */,
 				4CAFC1C9164EF07000714D90 /* CoreLocation.framework in Frameworks */,
 				4CC67418164EE3DA00609958 /* SystemConfiguration.framework in Frameworks */,
 				4CC67416164EE3D400609958 /* MobileCoreServices.framework in Frameworks */,
@@ -102,6 +110,7 @@
 		4C1A3FFC164EE38200C2D2EF = {
 			isa = PBXGroup;
 			children = (
+				4CAFC1D1164F236D00714D90 /* MapKit.framework */,
 				4CAFC1C8164EF07000714D90 /* CoreLocation.framework */,
 				4CC67417164EE3D900609958 /* SystemConfiguration.framework */,
 				4CC67415164EE3D400609958 /* MobileCoreServices.framework */,
@@ -144,6 +153,9 @@
 				4C1A4012164EE38200C2D2EF /* Supporting Files */,
 				4C3BB673164EE81400F35125 /* ListViewController.h */,
 				4C3BB674164EE81400F35125 /* ListViewController.m */,
+				4CAFC1CC164F1F3500714D90 /* RestaurantViewController.h */,
+				4CAFC1CD164F1F3500714D90 /* RestaurantViewController.m */,
+				4CAFC1CE164F1F3500714D90 /* RestaurantViewController.xib */,
 			);
 			path = Bestaurant;
 			sourceTree = "<group>";
@@ -246,6 +258,7 @@
 				4C1A4029164EE38200C2D2EF /* first@2x.png in Resources */,
 				4C1A402E164EE38200C2D2EF /* second.png in Resources */,
 				4C1A4030164EE38200C2D2EF /* second@2x.png in Resources */,
+				4CAFC1D0164F1F3500714D90 /* RestaurantViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +282,7 @@
 				4C971364164EE4320095410A /* UIImageView+AFNetworking.m in Sources */,
 				4C3BB675164EE81400F35125 /* ListViewController.m in Sources */,
 				4CAFC1CB164EF7F500714D90 /* DataProvider.m in Sources */,
+				4CAFC1CF164F1F3500714D90 /* RestaurantViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

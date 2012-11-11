@@ -8,6 +8,7 @@
 
 #import "ListViewController.h"
 #import "DataProvider.h"
+#import "RestaurantViewController.h"
 
 @implementation ListViewController
 
@@ -84,6 +85,11 @@
     cell.textLabel.text = item[@"name"];
 
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    RestaurantViewController *vc = [[RestaurantViewController alloc] initWithItem:data[indexPath.row]];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
