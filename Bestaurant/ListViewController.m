@@ -11,6 +11,7 @@
 #import "RestaurantViewController.h"
 #import "UIImage+iPhone5.h"
 #import "UIImageView+AFNetworking.h"
+#import "BumpClient.h"
 
 @implementation ListViewController
 
@@ -140,6 +141,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [[BumpClient sharedClient] simulateBump];
     RestaurantViewController *vc = [[RestaurantViewController alloc] initWithItem:(tableView == self.tableView ? data : searchData)[indexPath.row]];
     [self.navigationController pushViewController:vc animated:YES];
 }

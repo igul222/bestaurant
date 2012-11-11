@@ -787,6 +787,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bestaurant/Bestaurant-Prefix.pch";
 				INFOPLIST_FILE = "Bestaurant/Bestaurant-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Bestaurant\"",
@@ -804,6 +805,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bestaurant/Bestaurant-Prefix.pch";
 				INFOPLIST_FILE = "Bestaurant/Bestaurant-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Bestaurant\"",

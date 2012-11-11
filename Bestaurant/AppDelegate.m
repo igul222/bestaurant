@@ -55,6 +55,12 @@
                 NSLog(@"Bump detected.");
                 break;
             case BUMP_EVENT_NO_MATCH:
+                if(bump_attempt_count < 5) {
+                    [[BumpClient sharedClient] simulateBump];
+                    bump_attempt_count += 1;
+                } else {
+                    bump_attempt_count = 0;
+                }
                 NSLog(@"No match.");
                 break;
         }

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate> {
+    NSInteger bump_attempt_count;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 
