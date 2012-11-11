@@ -10,6 +10,7 @@
 #import "DataProvider.h"
 #import "RestaurantViewController.h"
 #import "UIImage+iPhone5.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation ListViewController
 
@@ -49,6 +50,8 @@
     UIColor *color = [UIColor colorWithPatternImage:[UIImage tallImageNamed:@"leather-background.png"]];
     [self.view setBackgroundColor:color];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.tableView.rowHeight = 62.0;
 }
 
 #pragma mark - Refreshing
@@ -110,12 +113,29 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
     if(!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
+        [[NSBundle mainBundle] loadNibNamed:@"ListCell"
+                                      owner:self
+                                    options:nil];
+        cell = self.listCell;
+        self.listCell = nil;
     }
     
     NSDictionary *item = (tableView == self.tableView ? data : searchData)[indexPath.row];
-    cell.textLabel.text = item[@"name"];
+    
+    // name
+    ((UILabel *)[cell viewWithTag:1002]).text = item[@"name"];
 
+    // image
+    [(UIImageView *)[cell viewWithTag:1001] setImageWithURL:[NSURL URLWithString:item[@"image_url"]]
+                                           placeholderImage:[UIImage imageNamed:@"black.png"]];
+
+    // stars
+    int stars = 0;
+    if(item[@"average_ratings"])
+        stars = (int)round([[item[@"average_ratings"] allValues][0] doubleValue]);
+    ((UIImageView *)[cell viewWithTag:1003]).image = [UIImage imageNamed:[NSString stringWithFormat:@"stars%i.png",stars]];
+
+    
     return cell;
 }
 

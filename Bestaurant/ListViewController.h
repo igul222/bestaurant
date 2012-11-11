@@ -23,6 +23,7 @@ typedef enum _ListViewControllerType {
 }
 
 @property(nonatomic) ListViewControllerType type;
+@property (strong, nonatomic) IBOutlet UITableViewCell *listCell;
 
 -(id)initWithType:(ListViewControllerType)type;
 

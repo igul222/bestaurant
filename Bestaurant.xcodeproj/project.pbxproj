@@ -135,6 +135,8 @@
 		4CED21B4164FAF47005A6E6B /* UIImage+iPhone5.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CED21B3164FAF47005A6E6B /* UIImage+iPhone5.m */; };
 		4CED21E2164FB896005A6E6B /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CED21E0164FB896005A6E6B /* second@2x.png */; };
 		4CED21E3164FB896005A6E6B /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CED21E1164FB896005A6E6B /* first@2x.png */; };
+		4CED21E9164FC126005A6E6B /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CED21E8164FC126005A6E6B /* ListCell.xib */; };
+		4CED21EC164FC1C7005A6E6B /* listcell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CED21EB164FC1C7005A6E6B /* listcell@2x.png */; };
 		BF43B56F164FBEA500364C61 /* libBump.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF43B56E164FBEA500364C61 /* libBump.a */; };
 		BF43B572164FBEC100364C61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF43B571164FBEC100364C61 /* AudioToolbox.framework */; };
 		BF43B574164FBEC900364C61 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF43B573164FBEC900364C61 /* CFNetwork.framework */; };
@@ -288,6 +290,8 @@
 		4CED21B3164FAF47005A6E6B /* UIImage+iPhone5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+iPhone5.m"; sourceTree = "<group>"; };
 		4CED21E0164FB896005A6E6B /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		4CED21E1164FB896005A6E6B /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		4CED21E8164FC126005A6E6B /* ListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
+		4CED21EB164FC1C7005A6E6B /* listcell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listcell@2x.png"; sourceTree = "<group>"; };
 		BF43B56D164FBEA500364C61 /* BumpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BumpClient.h; sourceTree = "<group>"; };
 		BF43B56E164FBEA500364C61 /* libBump.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBump.a; sourceTree = "<group>"; };
 		BF43B571164FBEC100364C61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -370,9 +374,11 @@
 				4CED20E9164FA390005A6E6B /* stars3@2x.png */,
 				4CED20EA164FA390005A6E6B /* stars4@2x.png */,
 				4CED20EB164FA390005A6E6B /* stars5@2x.png */,
+				4CED21EB164FC1C7005A6E6B /* listcell@2x.png */,
 				4C1A4012164EE38200C2D2EF /* Supporting Files */,
 				4C3BB673164EE81400F35125 /* ListViewController.h */,
 				4C3BB674164EE81400F35125 /* ListViewController.m */,
+				4CED21E8164FC126005A6E6B /* ListCell.xib */,
 				4CAFC1CC164F1F3500714D90 /* RestaurantViewController.h */,
 				4CAFC1CD164F1F3500714D90 /* RestaurantViewController.m */,
 				4CAFC1CE164F1F3500714D90 /* RestaurantViewController.xib */,
@@ -675,6 +681,8 @@
 				4CED21B0164FAB56005A6E6B /* time@2x.png in Resources */,
 				4CED21E2164FB896005A6E6B /* second@2x.png in Resources */,
 				4CED21E3164FB896005A6E6B /* first@2x.png in Resources */,
+				4CED21E9164FC126005A6E6B /* ListCell.xib in Resources */,
+				4CED21EC164FC1C7005A6E6B /* listcell@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
