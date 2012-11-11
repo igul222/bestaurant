@@ -11,6 +11,7 @@
 @interface DataProvider : NSObject {
     NSMutableArray *likes;
     NSMutableArray *dislikes;
+    NSString *currentQuery;
 }
 
 +(DataProvider *)shared;
@@ -18,6 +19,8 @@
 -(void)itemsForLatitude:(double)latitude longitude:(double)longitude query:(NSString *)query callback:(void(^)(NSArray *items))callback;
 -(void)savePreference:(BOOL)liked forItem:(NSString *)itemID;
 -(void)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude callback:(void(^)(NSArray *items))callback;
-
+-(void)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude likes:(NSArray *)theLikes dislikes:(NSArray *)theDislikes callback:(void(^)(NSArray *items))callback;
+-(NSArray *)getLikes;
+-(NSArray *)getDislikes;
 
 @end
