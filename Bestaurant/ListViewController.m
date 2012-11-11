@@ -33,16 +33,29 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    searchBar.delegate = self;
+    self.tableView.tableHeaderView = searchBar;
+    
+    searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    searchController.delegate = self;
+    searchController.searchResultsDataSource = self;
+    searchController.searchResultsDelegate = self;
 }
 
 #pragma mark - Refreshing
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    CLLocation *location = [locations lastObject];
-    [self refreshWithLocation:location.coordinate];
+    CLLocation *locationObject = [locations lastObject];
+    location = locationObject.coordinate;
+    [self refresh];
+
+    if([locationObject horizontalAccuracy] <= 100.0)
+        [locationManager stopUpdatingLocation];
 }
 
--(void)refreshWithLocation:(CLLocationCoordinate2D)location {
+-(void)refresh {
     if(_type == ListViewControllerTypeNearby) {
         [[DataProvider shared] itemsForLatitude:location.latitude
                                              longitude:location.longitude
@@ -59,8 +72,17 @@
                                                       [self.tableView reloadData];
                                                   }];
     }
-    
-//    [locationManager stopUpdatingLocation];
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    searchData = nil;
+    [[DataProvider shared] itemsForLatitude:location.latitude
+                                  longitude:location.longitude
+                                      query:searchText
+                                   callback:^(NSArray *items) {
+                                       searchData = items;
+                                       [self.searchDisplayController.searchResultsTableView reloadData];
+                                   }];
 }
 
 #pragma mark - Table view
@@ -70,7 +92,10 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return data.count;
+    if(tableView == self.tableView)
+        return data.count;
+    else
+        return searchData.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -81,14 +106,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
     }
     
-    NSDictionary *item = data[indexPath.row];
+    NSDictionary *item = (tableView == self.tableView ? data : searchData)[indexPath.row];
     cell.textLabel.text = item[@"name"];
 
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    RestaurantViewController *vc = [[RestaurantViewController alloc] initWithItem:data[indexPath.row]];
+    RestaurantViewController *vc = [[RestaurantViewController alloc] initWithItem:(tableView == self.tableView ? data : searchData)[indexPath.row]];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

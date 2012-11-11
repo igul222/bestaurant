@@ -13,6 +13,8 @@
     NSDictionary *_item;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *starsView;
 
 - (id)initWithItem:(NSDictionary *)item;
 

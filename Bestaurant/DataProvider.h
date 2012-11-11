@@ -11,6 +11,7 @@
 @interface DataProvider : NSObject {
     NSMutableArray *likes;
     NSMutableArray *dislikes;
+    NSString *currentQuery;
 }
 
 +(DataProvider *)shared;

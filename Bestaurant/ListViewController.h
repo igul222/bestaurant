@@ -14,10 +14,14 @@ typedef enum _ListViewControllerType {
     ListViewControllerTypeRecommended
 } ListViewControllerType;
 
-@interface ListViewController : UITableViewController <CLLocationManagerDelegate> {
+@interface ListViewController : UITableViewController <CLLocationManagerDelegate, UISearchBarDelegate, UISearchDisplayDelegate> {
     NSArray *data;
+    NSArray *searchData;
+    CLLocationCoordinate2D location;
     CLLocationManager *locationManager;
+    UISearchDisplayController *searchController;
 }
+
 @property(nonatomic) ListViewControllerType type;
 
 -(id)initWithType:(ListViewControllerType)type;

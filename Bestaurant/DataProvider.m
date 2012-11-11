@@ -42,6 +42,9 @@ static DataProvider *sharedInstance = nil;
 // http://api.hunch.com/api/v1/get-results?query=WHATEVER&topic_ids=list_restaurant
 // query parameter can be nil
 -(void)itemsForLatitude:(double)latitude longitude:(double)longitude query:(NSString *)query callback:(void(^)(NSArray *items))callback {
+    
+    if(query)
+        currentQuery = query;
     NSString *query_str = (query ? [NSString stringWithFormat:@"query=%@&",[query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] : @"");
     
     NSString *url_str = [NSString stringWithFormat:
@@ -57,7 +60,10 @@ static DataProvider *sharedInstance = nil;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url_str]];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSLog(@"received items: %@",JSON);
-        callback(JSON[@"results"]);
+        
+        if(!query || (currentQuery && [currentQuery isEqualToString:query]))
+            callback(JSON[@"results"]);
+        
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"error getting items: %@", error.userInfo);
     }];
@@ -79,7 +85,7 @@ static DataProvider *sharedInstance = nil;
 
 -(void)recommendedItemsForLatitude:(double)latitude longitude:(double)longitude callback:(void(^)(NSArray *items))callback {
     NSString *url_str = [NSString stringWithFormat:
-                         @"http://api.hunch.com/api/v1/get-recommendations?auth_token=%@&lat=%f&lng=%f&radius=10&likes=%@&dislikes=%@&topic_ids=list_restaurant",
+                         @"http://api.hunch.com/api/v1/get-recommendations?auth_token=%@&lat=%f&lng=%f&radius=30&likes=%@&dislikes=%@&topic_ids=list_restaurant",
                          AUTH_TOKEN,
                          latitude,
                          longitude,
