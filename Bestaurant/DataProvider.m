@@ -110,4 +110,11 @@ static DataProvider *sharedInstance = nil;
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:filename];
 }
 
+-(NSArray *)getLikes{
+    return likes;
+}
+-(NSArray *)getDislikes{
+    return dislikes;
+}
+
 @end

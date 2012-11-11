@@ -45,6 +45,9 @@
 		4CED20EE164FA390005A6E6B /* stars3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CED20E9164FA390005A6E6B /* stars3@2x.png */; };
 		4CED20EF164FA390005A6E6B /* stars4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CED20EA164FA390005A6E6B /* stars4@2x.png */; };
 		4CED20F0164FA390005A6E6B /* stars5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CED20EB164FA390005A6E6B /* stars5@2x.png */; };
+		BF43B55F164FAD7300364C61 /* libBump.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF43B55E164FAD7300364C61 /* libBump.a */; };
+		BF43B562164FADA100364C61 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF43B561164FADA100364C61 /* CFNetwork.framework */; };
+		BF43B564164FADC400364C61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF43B563164FADC400364C61 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +107,10 @@
 		4CED20E9164FA390005A6E6B /* stars3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stars3@2x.png"; sourceTree = "<group>"; };
 		4CED20EA164FA390005A6E6B /* stars4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stars4@2x.png"; sourceTree = "<group>"; };
 		4CED20EB164FA390005A6E6B /* stars5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stars5@2x.png"; sourceTree = "<group>"; };
+		BF43B55D164FAD7300364C61 /* BumpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BumpClient.h; sourceTree = "<group>"; };
+		BF43B55E164FAD7300364C61 /* libBump.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBump.a; sourceTree = "<group>"; };
+		BF43B561164FADA100364C61 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		BF43B563164FADC400364C61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +118,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF43B564164FADC400364C61 /* AudioToolbox.framework in Frameworks */,
+				BF43B562164FADA100364C61 /* CFNetwork.framework in Frameworks */,
 				4CAFC1D2164F236D00714D90 /* MapKit.framework in Frameworks */,
 				4CAFC1C9164EF07000714D90 /* CoreLocation.framework in Frameworks */,
 				4CC67418164EE3DA00609958 /* SystemConfiguration.framework in Frameworks */,
@@ -118,6 +127,7 @@
 				4C1A400C164EE38200C2D2EF /* UIKit.framework in Frameworks */,
 				4C1A400E164EE38200C2D2EF /* Foundation.framework in Frameworks */,
 				4C1A4010164EE38200C2D2EF /* CoreGraphics.framework in Frameworks */,
+				BF43B55F164FAD7300364C61 /* libBump.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +137,8 @@
 		4C1A3FFC164EE38200C2D2EF = {
 			isa = PBXGroup;
 			children = (
+				BF43B563164FADC400364C61 /* AudioToolbox.framework */,
+				BF43B561164FADA100364C61 /* CFNetwork.framework */,
 				4CAFC1D1164F236D00714D90 /* MapKit.framework */,
 				4CAFC1C8164EF07000714D90 /* CoreLocation.framework */,
 				4CC67417164EE3D900609958 /* SystemConfiguration.framework */,
@@ -158,6 +170,8 @@
 		4C1A4011164EE38200C2D2EF /* Bestaurant */ = {
 			isa = PBXGroup;
 			children = (
+				BF43B55D164FAD7300364C61 /* BumpClient.h */,
+				BF43B55E164FAD7300364C61 /* libBump.a */,
 				4C971348164EE42B0095410A /* AFNetworking */,
 				4CA5DDB3164EE3A0005E2658 /* DataProvider.h */,
 				4CA5DDB4164EE3A0005E2658 /* DataProvider.m */,
@@ -395,6 +409,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bestaurant/Bestaurant-Prefix.pch";
 				INFOPLIST_FILE = "Bestaurant/Bestaurant-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Bestaurant\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -408,6 +426,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bestaurant/Bestaurant-Prefix.pch";
 				INFOPLIST_FILE = "Bestaurant/Bestaurant-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Bestaurant\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
